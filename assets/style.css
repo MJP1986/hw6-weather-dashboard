@@ -1,0 +1,54 @@
+h1 {
+    color:white;
+    text-align: center;
+    background-color: #333333;
+    height: 100px;
+    line-height: 90px;
+}
+
+
+.form-container {
+    height: auto; 
+    margin-top: 10px;
+    padding: 25px;
+    background-color: whitesmoke;
+
+}
+
+#add-city {
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 5px;
+}
+
+#add-city:hover {
+    border: 2px solid lightblue;
+
+}
+
+.currentWeather {
+    margin: 10px auto;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid rgb(160, 159, 159);
+    padding: 25px 0px;
+    font-size: 16px;
+}
+
+.forcast {
+    padding:15px;
+}
+
+.day {
+    background: DodgerBlue;
+    margin: 0px auto;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid rgb(160, 159, 159);
+    padding: 25px;
+    font-size: 16px;
+}
+
+.city-text {
+    padding-left: 40px;
+}

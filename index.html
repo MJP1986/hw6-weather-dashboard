@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/style.css">
+
+
+    <title>Document</title>
+</head>
+<h1>Weather Dashboard</h1>
+<div class="row">
+    <div class="container col-md-3 form-container">
+        <h3>Search for a City:</h3>
+        <form id="city-form">
+            <input type="text" id="search" placeholder="Atlanta">
+            <button type="submit" id="add-city"><i class="fa fa-search"></i></button>
+        </form>
+        <div id="city-list">
+            <button>Atlanta</button>
+        </div>
+    </div>
+
+
+    <div class="container col-md-9">
+        <div class="row currentWeather">
+            <div class="col-md-12">
+                <h3 class="city-text"></h3>
+                <ul style="list-style-type:none;">
+                    <li id="temp">Temperature:</li>
+                    <li id="humidity">Humidity:</li>
+                    <li id="wind">Wind:</li>
+                    <li id="uv">UV Index:</li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="row forcast">
+            <h3>5-Day Forcast:</h3>
+        </div>
+        <div class="row fiveDay">
+            <div class="day col-sm-2">
+
+            </div>
+            <div class="day col-sm-2">
+
+            </div>
+            <div class="day col-sm-2">
+
+            </div>
+            <div class="day col-sm-2">
+
+            </div>
+            <div class="day col-sm-2">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="javascript.js"></script>
+</body>
+
+</html>
