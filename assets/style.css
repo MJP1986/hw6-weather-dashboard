@@ -52,3 +52,7 @@ h1 {
 .city-text {
     padding-left: 40px;
 }
+
+#wicon {
+    height: 33px;
+}

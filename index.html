@@ -19,19 +19,20 @@
     <div class="container col-md-3 form-container">
         <h3>Search for a City:</h3>
         <form id="city-form">
-            <input type="text" id="search" placeholder="Atlanta">
+            <input type="text" id="city-input" placeholder="Atlanta">
             <button type="submit" id="add-city"><i class="fa fa-search"></i></button>
         </form>
-        <div id="city-list">
-            <button>Atlanta</button>
-        </div>
+        <div id="city-list"></div>
     </div>
 
 
     <div class="container col-md-9">
         <div class="row currentWeather">
             <div class="col-md-12">
+                <div class="row col-md-12">
                 <h3 class="city-text"></h3>
+                <div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
+</div>
                 <ul style="list-style-type:none;">
                     <li id="temp">Temperature:</li>
                     <li id="humidity">Humidity:</li>
@@ -41,25 +42,20 @@
             </div>
         </div>
 
-        
+
         <div class="row forcast">
             <h3>5-Day Forcast:</h3>
         </div>
         <div class="row fiveDay">
             <div class="day col-sm-2">
-
             </div>
             <div class="day col-sm-2">
-
             </div>
             <div class="day col-sm-2">
-
             </div>
             <div class="day col-sm-2">
-
             </div>
             <div class="day col-sm-2">
-
             </div>
         </div>
     </div>

@@ -1,39 +1,86 @@
 var now = moment();
 var currentDate = now.format('l');
-var cities = ["Altanta", "Los Angeles"];
+
 
 
 var APIKey = "2bca8808676f3776bfbc587d4a852ac4";
 
-    // Here we are building the URL we need to query the database
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-      "q=Atlanta&units=imperial&appid=" + APIKey;
-    // Here we run our AJAX call to the OpenWeatherMap API
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-      // We store all of the retrieved data inside of an object called "response"
-      .then(function(response) {
+function cityInfo(city) {
+  // Here we are building the URL we need to query the database
+  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+  // Here we run our AJAX call to the OpenWeatherMap API
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+    // We store all of the retrieved data inside of an object called "response"
+    .then(function (response) {
 
-        // Log the queryURL
-        console.log(queryURL);
+      // // Log the queryURL
+      // console.log(queryURL);
 
-        // Log the resulting object
-        console.log(response);
+      // Log the resulting object
+      console.log(response);
 
-        // Transfer content to HTML
-        $(".city-text").html("<h3>" + response.name + " " + "(" + currentDate + ")" + "</h3>");
-        $("#wind").text("Wind Speed: " + response.wind.speed);
-        $("#humidity").text("Humidity: " + response.main.humidity);
-        $("#temp").text("Temperature (F) " + response.main.temp);
+      // Transfer content to HTML
+      $(".city-text").html("<h3>" + response.name + " " + "(" + currentDate + ")" + "</h3>");
+      $("#wind").text("Wind Speed: " + response.wind.speed);
+      $("#humidity").text("Humidity: " + response.main.humidity);
+      $("#temp").text("Temperature (F) " + response.main.temp);
 
-        // Converts the temp to Kelvin with the below formula
-        var tempF = (response.main.temp - 273.15) * 1.80 + 32;
-        $(".tempF").text("Temperature (Kelvin) " + tempF);
+      var lat = response.coord.lat;
+            var lon = response.coord.lon;
+            getUV (lat, lon);
+            var iconCode = response.weather[0].icon;
+            var iconURL = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+            var icon = $("#wicon").attr("src", iconURL);
+        });
+}
 
-        // Log the data in the console as well
-        console.log("Wind Speed: " + response.wind.speed);
-        console.log("Humidity: " + response.main.humidity);
-        console.log("Temperature (F): " + response.main.temp);
+function getUV(lat, lon) {
+  // an API call to get UV data an post data to the DOM
+  var latitude = lat;
+  var longitude = lon;
+  var queryUv = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + latitude + "&lon=" + longitude;
+
+  $.ajax({
+    url: queryUv,
+    method: "GET"
+  })
+    .then(function (response) {
+      $("#uv").text("UV Index: " + response.value);
+      console.log(response)
+    });
+};
+
+
+
+function renderButtons() {
+  var cities = JSON.parse(localStorage.getItem("cities")) || []
+  $("#city-list").empty();
+  for (var i = 0; i < cities.length; i++) {
+    var a = $("<button>");
+    a.addClass("city");
+    a.attr("data-name", cities[i]);
+    a.text(cities[i]);
+    $("#city-list").append(a);
+  }
+}
+
+$("#add-city").on("click", function (event) {
+  event.preventDefault();
+  var cities = JSON.parse(localStorage.getItem("cities")) || []
+
+  var city = $("#city-input").val().trim();
+  cityInfo(city)
+  cities.push(city);
+  localStorage.setItem("cities", JSON.stringify(cities))
+  renderButtons();
+});
+
+renderButtons();
+
+$(document).on("click", ".city", function () {
+  var city = $(this).attr("data-name");
+  cityInfo(city);
 });
