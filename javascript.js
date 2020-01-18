@@ -29,15 +29,16 @@ function cityInfo(city) {
       $("#temp").text("Temperature (F) " + response.main.temp);
 
       var lat = response.coord.lat;
-            var lon = response.coord.lon;
-            getUV (lat, lon);
-            var iconCode = response.weather[0].icon;
-            var iconURL = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
-            var icon = $("#wicon").attr("src", iconURL);
-        });
+      var lon = response.coord.lon;
+      uvIndex(lat, lon);
+
+      var iconCode = response.weather[0].icon;
+      var iconURL = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+      var icon = $("#wicon").attr("src", iconURL);
+    });
 }
 
-function getUV(lat, lon) {
+function uvIndex(lat, lon) {
   // an API call to get UV data an post data to the DOM
   var latitude = lat;
   var longitude = lon;
@@ -48,8 +49,21 @@ function getUV(lat, lon) {
     method: "GET"
   })
     .then(function (response) {
-      $("#uv").text("UV Index: " + response.value);
-      console.log(response)
+      $("#uv").text(response.value);
+      var uvColor = response.value;
+    if (uvColor < 2) { 
+        $("#uv").removeClass()
+        $("#uv").addClass("green")
+      } else if (uvColor < 5) { 
+        $("#uv").removeClass()
+        $("#uv").addClass("yellow")
+      } else if (uvColor < 7) { 
+        $("#uv").removeClass()
+        $("#uv").addClass("orange")
+      } else {
+        $("#uv").removeClass()
+        $("#uv").addClass("red")
+      }
     });
 };
 

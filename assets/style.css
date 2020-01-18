@@ -53,6 +53,41 @@ h1 {
     padding-left: 40px;
 }
 
+.city {
+    background-color: white;
+    color: black;
+    border: 1px solid #e7e7e7;
+    width: 100%;
+    
+}
+
 #wicon {
     height: 33px;
+}
+
+#city-form {
+    margin-bottom: 15px;
+}
+
+.green {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+}
+
+.yellow {
+    background-color: rgb(255, 238, 0);
+    border-radius: 5px;
+}
+
+.orange {
+    background-color: darkorange;
+    color: white;
+    border-radius: 5px;
+}
+
+.red {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
 }
