@@ -62,7 +62,7 @@ h1 {
 }
 
 #wicon {
-    height: 33px;
+    height: 35px;
 }
 
 #city-form {
@@ -90,4 +90,18 @@ h1 {
     background-color: red;
     color: white;
     border-radius: 5px;
+}
+
+.fiveBox {
+    padding: 0px;
+    height: 150px;
+    color: white;
+}
+
+.day.col-sm-2 {
+    padding:0px;
+}
+
+.ficon {
+    height:70px;
 }
