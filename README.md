@@ -12,7 +12,7 @@
 
 ## Link
 
-[https://github.com/MJP1986/hw6-weather-dashboard/](https://github.com/MJP1986/hw6-weather-dashboard/)
+[https://mjp1986.github.io/hw6-weather-dashboard/](https://mjp1986.github.io/hw6-weather-dashboard/)
 
 ## Description
 
